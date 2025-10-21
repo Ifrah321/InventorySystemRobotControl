@@ -7,7 +7,6 @@ namespace InventorySystemRobotControl
 {
     public class Robot
     {
-        // 🧩 TRIN 9 — Positioner for bokse (a, b, c, S)
         private readonly Dictionary<char, double[]> boxPositions = new()
         {
             { 'a', new double[] { 0.2, -0.3, 0.1, 0, -3.1415, 0 } },
@@ -18,7 +17,7 @@ namespace InventorySystemRobotControl
 
         public Robot()
         {
-            // Sørg for at robotten bruger punktum som decimal
+      
             Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
         }
 
@@ -38,36 +37,30 @@ def move_item():
 end
 ";
         }
-
-        // 🦾 TRIN 9 — Flyt et item fra lagerboks til forsendelsesboks
+        
         public void MoveItem(string itemName, char fromBox, char toBox)
         {
             Console.WriteLine($"[Robot] Picking {itemName} from {fromBox}, placing in {toBox}");
-
-            // Tjek at begge bokse findes i ordbogen
+            
             if (!boxPositions.ContainsKey(fromBox) || !boxPositions.ContainsKey(toBox))
             {
                 Console.WriteLine("[Robot]  Error: Unknown box position!");
                 return;
             }
-
-            // Hent positioner fra dictionary
+            
             var startPose = boxPositions[fromBox];
             var endPose = boxPositions[toBox];
-
-            // Generer URScript til bevægelsen
+            
             string urProgram = GenerateURScript(startPose, endPose);
-
-            // “Send” programmet (viser i konsol)
+            
             SendProgram(urProgram, 0);
 
             Console.WriteLine($"[Robot] Executed URScript for {itemName}\n");
         }
-
-        // 👋 TRIN 10 — Waving arm (Activity 41)
+        
         public void WaveArm()
         {
-            Console.WriteLine("[Robot] Starting waving motion 👋");
+            Console.WriteLine("[Robot] Starting waving motion ");
 
             string urScript = @"
 def wave():
@@ -84,7 +77,7 @@ end
 
             SendProgram(urScript, 0);
 
-            Console.WriteLine("[Robot] Completed waving motion ✅");
+            Console.WriteLine("[Robot] Completed waving motion ");
         }
     }
 }

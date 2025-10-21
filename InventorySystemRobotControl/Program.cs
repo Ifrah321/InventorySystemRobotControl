@@ -12,13 +12,11 @@ namespace InventorySystemRobotControl
 
             var robot = new Robot();
             var inventory = new Inventory();
-
-            // Tilføj varer til lager (navne skal matche det du leder efter)
+            
             inventory.AddItem(new Item("A", 10));
             inventory.AddItem(new Item("B", 20));
             inventory.AddItem(new Item("C", 30));
-
-            // Ordre 1
+            
             var order1 = new Order
             {
                 OrderLines = new List<OrderLine>
@@ -27,8 +25,7 @@ namespace InventorySystemRobotControl
                     new OrderLine(inventory.FindItem("B")!, 1),
                 }
             };
-
-            // Ordre 2
+            
             var order2 = new Order
             {
                 OrderLines = new List<OrderLine>
@@ -38,15 +35,13 @@ namespace InventorySystemRobotControl
                     new OrderLine(inventory.FindItem("B")!, 1),
                 }
             };
-
-            // 🔹 Behandl ordrer
+            
             ProcessOrder(robot, order1);
             ProcessOrder(robot, order2);
-
-            // 👋 Tilføj waving-funktionen her
+            
             robot.WaveArm();
 
-            Console.WriteLine("\nAlle ordrer er behandlet ✅");
+            Console.WriteLine("\nAlle ordrer er behandlet ");
         }
 
         static void ProcessOrder(Robot robot, Order order)
@@ -57,7 +52,7 @@ namespace InventorySystemRobotControl
             foreach (var line in order.OrderLines)
             {
                 var itemName = line.Item.Name;
-                var box = char.ToLower(itemName[0]); // A->a, B->b, C->c
+                var box = char.ToLower(itemName[0]); 
                 robot.MoveItem(itemName, box, shipmentBox);
             }
 
