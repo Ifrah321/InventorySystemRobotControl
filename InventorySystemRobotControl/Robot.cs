@@ -1,4 +1,6 @@
 using System;
+using System.Net.Sockets;
+using System.Text;
 using System.Globalization;
 using System.Threading;
 using System.Collections.Generic;
@@ -17,13 +19,25 @@ namespace InventorySystemRobotControl
 
         public Robot()
         {
-      
             Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
         }
 
         public void SendProgram(string program, uint item_id)
         {
-            Console.WriteLine($"[Robot] Program sent:\n{program}\nitem_id: {item_id}");
+            try
+            {
+                using (var client = new TcpClient("127.0.0.1", 30002))
+                using (var stream = client.GetStream())
+                {
+                    var data = Encoding.ASCII.GetBytes(program + "\n");
+                    stream.Write(data, 0, data.Length);
+                    Console.WriteLine($"[Robot] Program sent to 127.0.0.1:30002 (item_id: {item_id})");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[Robot] Connection error: {ex.Message}");
+            }
         }
 
         public string GenerateURScript(double[] startPose, double[] endPose)
@@ -35,32 +49,28 @@ def move_item():
     movej(get_inverse_kin(p_start))
     movej(get_inverse_kin(p_end))
 end
+move_item()
 ";
         }
-        
+
         public void MoveItem(string itemName, char fromBox, char toBox)
         {
-            Console.WriteLine($"[Robot] Picking {itemName} from {fromBox}, placing in {toBox}");
-            
             if (!boxPositions.ContainsKey(fromBox) || !boxPositions.ContainsKey(toBox))
             {
                 Console.WriteLine("[Robot]  Error: Unknown box position!");
                 return;
             }
-            
+
             var startPose = boxPositions[fromBox];
             var endPose = boxPositions[toBox];
-            
-            string urProgram = GenerateURScript(startPose, endPose);
-            
-            SendProgram(urProgram, 0);
 
-            Console.WriteLine($"[Robot] Executed URScript for {itemName}\n");
+            string urProgram = GenerateURScript(startPose, endPose);
+            SendProgram(urProgram, 0);
         }
-        
+
         public void WaveArm()
         {
-            Console.WriteLine("[Robot] Starting waving motion ");
+            Console.WriteLine("[Robot] Starting waving motion 👋");
 
             string urScript = @"
 def wave():
@@ -74,10 +84,10 @@ def wave():
     end
 end
 ";
-
             SendProgram(urScript, 0);
-
             Console.WriteLine("[Robot] Completed waving motion ");
         }
     }
 }
+
+

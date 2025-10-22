@@ -10,13 +10,16 @@ namespace InventorySystemRobotControl
         {
             Console.WriteLine("=== Item Sorter Robot ===\n");
 
+            // Opret robot og lager
             var robot = new Robot();
             var inventory = new Inventory();
             
+            // Tilføj varer til lager
             inventory.AddItem(new Item("A", 10));
             inventory.AddItem(new Item("B", 20));
             inventory.AddItem(new Item("C", 30));
             
+            // Første ordre
             var order1 = new Order
             {
                 OrderLines = new List<OrderLine>
@@ -26,6 +29,7 @@ namespace InventorySystemRobotControl
                 }
             };
             
+            // Anden ordre
             var order2 = new Order
             {
                 OrderLines = new List<OrderLine>
@@ -36,29 +40,37 @@ namespace InventorySystemRobotControl
                 }
             };
             
+            // Behandl begge ordrer
             ProcessOrder(robot, order1);
             ProcessOrder(robot, order2);
             
+            // Afslut med et "hej hej" bølge-signal 😄
             robot.WaveArm();
 
-            Console.WriteLine("\nAlle ordrer er behandlet ");
+            Console.WriteLine("\n Alle ordrer er behandlet!");
         }
 
         static void ProcessOrder(Robot robot, Order order)
         {
-            Console.WriteLine($"Behandler ordre: {order}");
+            Console.WriteLine($"\nBehandler ordre: {order}");
             char shipmentBox = 'S';
 
             foreach (var line in order.OrderLines)
             {
                 var itemName = line.Item.Name;
-                var box = char.ToLower(itemName[0]); 
-                robot.MoveItem(itemName, box, shipmentBox);
+                var fromBox = char.ToLower(itemName[0]); // a, b, c
+                Console.WriteLine($"[Robot] Flytter {itemName} fra {fromBox} til {shipmentBox}");
+                robot.MoveItem(itemName, fromBox, shipmentBox);
+
+                // Giv robotten lidt tid til at "flytte" (ellers sker alt for hurtigt)
+                System.Threading.Thread.Sleep(2000);
             }
 
-            Console.WriteLine("[Robot] Shipment box moved away (conveyor)\n");
+            Console.WriteLine("[Robot] Shipment box flyttet væk (conveyor)\n");
         }
     }
 }
+
+
 
 

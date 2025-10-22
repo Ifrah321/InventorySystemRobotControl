@@ -8,13 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db50b2ea-5b14-48ab-9e60-b6d55f28b814" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/InventorySystemRobotControl/Models/Customer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InventorySystemRobotControl/Models/Inventory.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InventorySystemRobotControl/Models/Order.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InventorySystemRobotControl/Models/OrderLine.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InventorySystemRobotControl/Models/item.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InventorySystemRobotControl/Robot.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InventorySystemRobotControl/RobotController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventorySystemRobotControl/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InventorySystemRobotControl/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventorySystemRobotControl/Robot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InventorySystemRobotControl/Robot.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +22,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Ifrah321"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Ifrah321/InventorySystemRobotControl.git",
+    "accountId": "11fce51f-99bf-4a0d-9abe-fc9a18e82de4"
+  }
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/InventorySystemRobotControl/Models/Order.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/InventorySystemRobotControl/Robot.cs" root0="FORCE_HIGHLIGHTING" />
@@ -88,8 +95,25 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1760955920184</updated>
-      <workItem from="1760955925031" duration="4957000" />
+      <workItem from="1760955925031" duration="7758000" />
     </task>
+    <task id="LOCAL-00001" summary="uge 7">
+      <option name="closed" value="true" />
+      <created>1761062157339</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1761062157339</updated>
+    </task>
+    <task id="LOCAL-00002" summary=".">
+      <option name="closed" value="true" />
+      <created>1761062421764</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1761062421764</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -99,6 +123,9 @@
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="uge 7" />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
